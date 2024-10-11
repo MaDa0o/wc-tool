@@ -35,11 +35,15 @@ int main(int argc, char *argv[]){
 
 	if(argc == 1 || (argc == 2 && *argv[1] == '-')){
 		//take standard input
-		char c;
-		while( c=getchar() != '#'){
-			v.push_back(c);
+		std::string str;
+		while(getline(std::cin,str)){
+			if(str.empty()){break;}
+			for(int i = 0;i<str.size();i++){
+				v.push_back(str[i]);
+			}
+			v.push_back('\n');
 		}
-		option = argc==1?"":(std::string)argv[1];
+		v.pop_back();
 	}
 
 	else{
